@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico de Precificação: Markup Divisor vs. Multiplicador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E5DDCB; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .text-dark-blue { color: #004369; }
+        .bg-dark-blue { background-color: #004369; }
+        .text-teal { color: #01949A; }
+        .bg-teal { background-color: #01949A; }
+        .text-red-pink { color: #DB1F48; }
+        .bg-red-pink { background-color: #DB1F48; }
+        .text-beige { color: #E5DDCB; }
+        .bg-beige { background-color: #E5DDCB; }
+        .text-yellow-accent { color: #F8D49D; }
+        .bg-yellow-accent { background-color: #F8D49D; }
+        .border-dark-blue { border-color: #004369; }
+        .border-teal { border-color: #01949A; }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #DB1F48;
+            border: 3px solid #004369;
+        }
+    </style>
+</head>
+<body class="text-dark-blue">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-dark-blue mb-2">Dominando a Precificação</h1>
+            <p class="text-lg md:text-xl text-teal">Mais que um número, uma estratégia para o sucesso do seu negócio.</p>
+        </header>
+
+        <main>
+            
+            <section id="dilema" class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-blue mb-2">O Dilema Central: Markup vs. Margem</h2>
+                    <p class="max-w-3xl mx-auto text-dark-blue/80">O erro mais comum e perigoso na precificação é confundir estes dois conceitos. Entender a diferença é o primeiro passo para garantir sua lucratividade.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-xl p-6 border-l-4 border-teal">
+                        <h3 class="text-2xl font-bold text-teal mb-3">Markup 📈</h3>
+                        <p class="mb-4">É a porcentagem que você adiciona sobre o **custo** do produto para definir o preço de venda. A perspectiva é do vendedor: "Quanto eu quero adicionar ao meu custo?"</p>
+                        <p class="font-bold">Fórmula: <span class="font-normal">(Preço - Custo) / Custo</span></p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-xl p-6 border-l-4 border-red-pink">
+                        <h3 class="text-2xl font-bold text-red-pink mb-3">Margem de Lucro 💵</h3>
+                        <p class="mb-4">É a porcentagem do **preço de venda** que efetivamente é lucro. A perspectiva é financeira: "Quanto de cada real vendido é meu lucro?"</p>
+                        <p class="font-bold">Fórmula: <span class="font-normal">(Preço - Custo) / Preço</span></p>
+                    </div>
+                </div>
+                <div class="mt-8 bg-dark-blue text-white rounded-lg shadow-2xl p-8 text-center">
+                    <h4 class="text-2xl font-bold mb-2 text-yellow-accent">Veja a Diferença na Prática!</h4>
+                    <p class="text-beige text-lg">Um produto com custo de R$100 vendido por R$125 tem:</p>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-8 mt-4">
+                        <p class="text-5xl font-black">25% <span class="text-2xl font-bold block">de Markup</span></p>
+                        <p class="text-2xl font-bold text-yellow-accent">MAS APENAS</p>
+                        <p class="text-5xl font-black">20% <span class="text-2xl font-bold block">de Margem</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="metodos" class="mb-16">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-blue mb-2">Os Dois Caminhos da Precificação</h2>
+                    <p class="max-w-3xl mx-auto text-dark-blue/80">Existem duas abordagens principais para aplicar o markup. A escolha depende do seu objetivo: simplicidade ou precisão na rentabilidade.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-bold text-teal mb-2">1. Markup Multiplicador (A Partida 🚀)</h3>
+                        <p class="mb-4 text-dark-blue/80">Simples e direto. Você multiplica o custo por um fator para chegar ao preço. É ideal para definir preços iniciais rapidamente, mas ignora fatores de mercado.</p>
+                        <p class="bg-teal/10 text-teal font-mono p-3 rounded-md text-center mb-6">Preço = Custo × (1 + Markup %)</p>
+                        <div class="chart-container">
+                            <canvas id="industryMarkupChart"></canvas>
+                        </div>
+                        <p class="text-center mt-4 text-sm text-dark-blue/70">Observe como o markup varia drasticamente entre indústrias, refletindo valor percebido e concorrência.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-bold text-red-pink mb-2">2. Markup Divisor (O Alvo 🎯)</h3>
+                        <p class="mb-4 text-dark-blue/80">Preciso e estratégico. Você define o preço para garantir uma margem de lucro específica sobre a venda final. Essencial para o planejamento financeiro.</p>
+                        <p class="bg-red-pink/10 text-red-pink font-mono p-3 rounded-md text-center mb-6">Preço = Custo / (1 - Margem %)</p>
+                        <div class="chart-container">
+                            <canvas id="priceCompositionChart"></canvas>
+                        </div>
+                         <p class="text-center mt-4 text-sm text-dark-blue/70">Este método garante que a fatia de lucro desejada seja sempre alcançada no preço final.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="decisao" class="mb-16">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-blue mb-2">Fluxo de Decisão: Qual Método Usar?</h2>
+                    <p class="max-w-3xl mx-auto text-dark-blue/80">Sua escolha depende do cenário e do objetivo estratégico. Use este guia para decidir o caminho certo para cada situação.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="text-4xl bg-teal text-white w-16 h-16 rounded-full flex items-center justify-center font-bold">💡</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-dark-blue">Se o objetivo é...</h4>
+                            <p class="text-lg font-semibold text-teal">Definir rapidamente o preço de um novo produto.</p>
+                        </div>
+                        <div class="md:ml-auto text-center">
+                            <h4 class="text-xl font-bold text-dark-blue">Use...</h4>
+                            <p class="text-lg font-semibold text-teal">Markup Multiplicador</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="text-4xl bg-red-pink text-white w-16 h-16 rounded-full flex items-center justify-center font-bold">💰</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-dark-blue">Se o objetivo é...</h4>
+                            <p class="text-lg font-semibold text-red-pink">Garantir uma margem de lucro específica sobre a venda.</p>
+                        </div>
+                        <div class="md:ml-auto text-center">
+                            <h4 class="text-xl font-bold text-dark-blue">Use...</h4>
+                            <p class="text-lg font-semibold text-red-pink">Markup Divisor</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="text-4xl bg-teal text-white w-16 h-16 rounded-full flex items-center justify-center font-bold">🏷️</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-dark-blue">Se o objetivo é...</h4>
+                            <p class="text-lg font-semibold text-teal">Analisar o impacto de descontos na lucratividade.</p>
+                        </div>
+                        <div class="md:ml-auto text-center">
+                            <h4 class="text-xl font-bold text-dark-blue">Use...</h4>
+                            <p class="text-lg font-semibold text-teal">Markup Divisor</p>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="text-4xl bg-red-pink text-white w-16 h-16 rounded-full flex items-center justify-center font-bold">📊</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-dark-blue">Se o objetivo é...</h4>
+                            <p class="text-lg font-semibold text-red-pink">Alinhar preços com relatórios e metas financeiras.</p>
+                        </div>
+                        <div class="md:ml-auto text-center">
+                            <h4 class="text-xl font-bold text-dark-blue">Use...</h4>
+                            <p class="text-lg font-semibold text-red-pink">Markup Divisor</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="erros" class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-blue mb-2">Armadilhas Comuns a Evitar</h2>
+                    <p class="max-w-3xl mx-auto text-dark-blue/80">Uma precificação eficaz vai além das fórmulas. Fique atento a estes erros que podem comprometer seus lucros.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">⚠️</span>Ignorar o Mercado</h4>
+                        <p class="text-sm text-dark-blue/80">Precificar apenas com base no custo, sem analisar concorrentes e a demanda, pode te tirar do jogo.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">💸</span>Subestimar Custos</h4>
+                        <p class="text-sm text-dark-blue/80">Não incluir despesas indiretas (marketing, aluguel) no cálculo corrói seu lucro silenciosamente.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">💎</span>Desprezar o Valor</h4>
+                        <p class="text-sm text-dark-blue/80">Se seu produto tem alto valor percebido, um markup baixo significa deixar dinheiro na mesa.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">🗓️</span>Não Revisar Preços</h4>
+                        <p class="text-sm text-dark-blue/80">O mercado é dinâmico. Preços estáticos perdem oportunidades e relevância.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">🧩</span>Usar "Tamanho Único"</h4>
+                        <p class="text-sm text-dark-blue/80">Aplicar a mesma estratégia para todos os produtos e clientes é subotimizar a sua receita.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h4 class="font-bold text-lg mb-2"><span class="text-red-pink text-2xl mr-2">🤔</span>Falta de Objetivo</h4>
+                        <p class="text-sm text-dark-blue/80">Precificar sem uma meta clara (maximizar lucro, ganhar mercado) leva a estratégias ineficazes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="plano30dias" class="mb-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-blue mb-2">Seu Plano de 30 Dias para a Maestria</h2>
+                    <p class="max-w-3xl mx-auto text-dark-blue/80">Siga este roteiro estruturado para transformar seu conhecimento em prática e dominar a arte da precificação.</p>
+                </div>
+                <div class="relative pl-8 border-l-4 border-teal/50">
+                    <div class="mb-12 timeline-item">
+                        <h3 class="text-2xl font-bold text-teal">Semana 1: Fundamentos</h3>
+                        <p class="text-dark-blue/80">Foque em dominar as fórmulas. Calcule markups e margens para produtos hipotéticos. Use calculadoras online para verificar seu trabalho e solidificar a compreensão da diferença crucial entre eles.</p>
+                    </div>
+                    <div class="mb-12 timeline-item">
+                        <h3 class="text-2xl font-bold text-teal">Semana 2: Análise de Campo</h3>
+                        <p class="text-dark-blue/80">Mergulhe nos seus números e no seu mercado. Detalhe todos os seus custos (fixos e variáveis) e pesquise agressivamente os preços e propostas de valor dos seus concorrentes.</p>
+                    </div>
+                     <div class="mb-12 timeline-item">
+                        <h3 class="text-2xl font-bold text-teal">Semana 3: Aplicação Prática</h3>
+                        <p class="text-dark-blue/80">Aplique os métodos divisor e multiplicador aos seus produtos reais. Crie uma planilha de precificação para simular cenários e o impacto de descontos na sua margem de lucro.</p>
+                    </div>
+                     <div class="timeline-item">
+                        <h3 class="text-2xl font-bold text-teal">Semana 4: Estratégia e Refinamento</h3>
+                        <p class="text-dark-blue/80">Ajuste seus preços com base nas análises. Explore estratégias avançadas (como precificação por valor) e estabeleça um calendário para revisões periódicas, garantindo que sua precificação permaneça sempre otimizada.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-16 pt-8 border-t border-dark-blue/20">
+            <p class="font-bold text-2xl text-dark-blue">Precifique com Inteligência. Lucre com Estratégia.</p>
+            <p class="text-sm text-dark-blue/70 mt-2">Infográfico gerado com base no relatório de precificação.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabels(label, maxWidth) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const industryData = {
+            labels: ['Joalheria (Manufatura)', 'Consultoria (Serviços)', 'Roupas (Varejo)', 'Eletrônicos (Varejo)'].map(l => wrapLabels(l, 16)),
+            datasets: [{
+                label: 'Markup Médio (%)',
+                data: [150, 66.7, 50, 30],
+                backgroundColor: ['#01949A', '#01949A', '#01949A', '#01949A'],
+                borderColor: '#004369',
+                borderWidth: 2
+            }]
+        };
+
+        const priceCompositionData = {
+            labels: ['Custo do Produto', 'Margem de Lucro Bruta'].map(l => wrapLabels(l, 16)),
+            datasets: [{
+                label: 'Composição do Preço Final',
+                data: [1000, 111.11], 
+                backgroundColor: ['#004369', '#DB1F48'],
+                hoverOffset: 4
+            }]
+        };
+
+        const industryMarkupChartCtx = document.getElementById('industryMarkupChart').getContext('2d');
+        new Chart(industryMarkupChartCtx, {
+            type: 'bar',
+            data: industryData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Markup % sobre o Custo'
+                        }
+                    }
+                },
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Markup Médio por Indústria',
+                        font: { size: 16 }
+                    }
+                }
+            }
+        });
+
+        const priceCompositionChartCtx = document.getElementById('priceCompositionChart').getContext('2d');
+        new Chart(priceCompositionChartCtx, {
+            type: 'doughnut',
+            data: priceCompositionData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Composição do Preço (Método Divisor)',
+                        font: { size: 16 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            ...tooltipTitleCallback.plugins.tooltip.callbacks,
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
